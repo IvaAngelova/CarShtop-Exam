@@ -4,6 +4,10 @@ using MyWebServer;
 using MyWebServer.Controllers;
 using MyWebServer.Results.Views;
 
+using Microsoft.EntityFrameworkCore;
+
+using CarShop.Data;
+
 namespace CarShop
 {
     public class StartUp
@@ -13,7 +17,9 @@ namespace CarShop
                 .MapStaticFiles()
                 .MapControllers())
             .WithServices(services => services
-                .Add<IViewEngine, ParserViewEngine>())
+                .Add<IViewEngine, ParserViewEngine>()
+                .Add<CarShopDbContex>())
+            .WithConfiguration<CarShopDbContex>(context=> context.Database.Migrate())
             .Start();
     }
 }
