@@ -2,7 +2,7 @@
 
 namespace CarShop.Data.Migrations
 {
-    public partial class UserCarIssuesTables : Migration
+    public partial class UserCarIssueTables : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,7 +13,7 @@ namespace CarShop.Data.Migrations
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Username = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsMechanic = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>

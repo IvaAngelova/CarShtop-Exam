@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarShop.Data.Migrations
 {
     [DbContext(typeof(CarShopDbContex))]
-    [Migration("20210619100112_UserCarIssuesTables")]
-    partial class UserCarIssuesTables
+    [Migration("20210619150812_UserCarIssueTables")]
+    partial class UserCarIssueTables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -90,8 +90,7 @@ namespace CarShop.Data.Migrations
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Username")
                         .IsRequired()

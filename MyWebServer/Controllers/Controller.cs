@@ -87,7 +87,7 @@
             => this.Error(new[] { error });
 
         protected ActionResult Error(IEnumerable<string> errors)
-            => this.View("./Error", errors);
+            => this.View("./Shared/Error", errors);
 
         private ActionResult GetViewResult(string viewName, object model)
             => new ViewResult(this.Response, this.ViewEngine, viewName, this.GetType().GetControllerName(), model, this.User.Id);

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace CarShop.Data.Models
@@ -12,7 +11,7 @@ namespace CarShop.Data.Models
             = Guid.NewGuid().ToString();
 
         [Required]
-        [MinLength(DataConstants.DefaultMinLength)]
+        [MinLength(DataConstants.UserMinUsername)]
         [MaxLength(DataConstants.DefaultMaxLength)]
         public string Username { get; set; }
 
@@ -21,7 +20,6 @@ namespace CarShop.Data.Models
 
         [Required]
         [MinLength(DataConstants.DefaultMinLength)]
-        [MaxLength(DataConstants.DefaultMaxLength)]
         public string Password { get; set; }
 
         public bool IsMechanic { get; set; }
