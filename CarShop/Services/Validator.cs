@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
-
+﻿using System;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using CarShop.Models.Cars;
 using CarShop.Models.Users;
 
 using static CarShop.Data.DataConstants;
@@ -33,6 +35,29 @@ namespace CarShop.Services
                 && model.UserType != UserTypeClient)
             {
                 errors.Add($"User should be either a '{UserTypeMechanic}' or '{UserTypeClient}'.");
+            }
+
+            return errors;
+        }
+        
+        public ICollection<string> ValidateCarCreation(AddCarForModel model)
+        {
+            var errors = new List<string>();
+
+            if (model.Model.Length < UserMinUsername
+                || model.Model.Length > DefaultMaxLength)
+            {
+                errors.Add($"Model '{model.Model}' is not valid! It must be between {UserMinUsername} and {DefaultMaxLength}.");
+            }
+
+            if (model.Year < CarYearMinValue || model.Year>CarYearMaxValue)
+            {
+                errors.Add($"Year '{model.Year}' is not valid! It must be between {CarYearMinValue} and {CarYearMaxValue}.");
+            }
+
+            if (Regex.IsMatch(model.PlateNumber, CarPlateNumberRegularExpression))
+            {
+                errors.Add($"Plate number '{model.PlateNumber}' is not valid! It should be in format 'AA0000AA'.");
             }
 
             return errors;

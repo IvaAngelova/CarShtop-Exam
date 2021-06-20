@@ -11,7 +11,11 @@
 
         public const int UserMinUsername = 4;
 
-        public const string UserTypeMechanic = "Mechanic";
         public const string UserTypeClient = "Client";
+        public const string UserTypeMechanic = "Mechanic";
+
+        public const int CarYearMinValue = 1900;
+        public const int CarYearMaxValue = 2100;
+        public const string CarPlateNumberRegularExpression = @"[A-Z]{2}[0-9]{4}[A-Z]{2}";
     }
 }
