@@ -2,6 +2,7 @@
 
 using CarShop.Models.Cars;
 using CarShop.Models.Users;
+using CarShop.Models.Issues;
 
 namespace CarShop.Services
 {
@@ -10,5 +11,7 @@ namespace CarShop.Services
         ICollection<string> ValidateUserRegistration(RegisterUserFormModel model);
 
         ICollection<string> ValidateCarCreation(AddCarForModel model);
+
+        ICollection<string> ValidateIssuesCreation(AddIssueForModel model);
     }
 }

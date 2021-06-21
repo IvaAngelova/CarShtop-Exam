@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using CarShop.Models.Cars;
+using CarShop.Models.Issues;
 using CarShop.Models.Users;
 
 using static CarShop.Data.DataConstants;
@@ -55,9 +55,21 @@ namespace CarShop.Services
                 errors.Add($"Year '{model.Year}' is not valid! It must be between {CarYearMinValue} and {CarYearMaxValue}.");
             }
 
-            if (Regex.IsMatch(model.PlateNumber, CarPlateNumberRegularExpression))
+            if (!Regex.IsMatch(model.PlateNumber, CarPlateNumberRegularExpression))
             {
                 errors.Add($"Plate number '{model.PlateNumber}' is not valid! It should be in format 'AA0000AA'.");
+            }
+
+            return errors;
+        }
+
+        public ICollection<string> ValidateIssuesCreation(AddIssueForModel model)
+        {
+            var errors = new List<string>();
+
+            if (model.Description.Length < DefaultMinLength)
+            {
+                errors.Add($"Description '{model.Description}' is not valid! Min Length must be {DefaultMinLength}.");
             }
 
             return errors;
